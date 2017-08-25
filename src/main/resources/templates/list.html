@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" >
+<head >
+    <meta charset="UTF-8"/>
+    <title>Twitter Messages</title>
+</head>
+<body>
+<a>All Messages Posted</a><br />
+<table>
+    <tr th:each="message: ${messages}">
+        Id:<td th:text="${message.id}"></td><br/>
+        Content:<td th:text="${message.content}"></td><br/>
+        Date Posted:<td th:text="${message.date}"></td><br/>
+        Sent by:<td th:text="${message.username}"></td><br/>
+        <td>
+            <a href="/">Go Back</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
