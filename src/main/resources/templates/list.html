@@ -6,16 +6,18 @@
 </head>
 <body>
 <a>All Messages Posted</a><br />
-<table>
-    <tr th:each="message: ${messages}">
-        Id:<td th:text="${message.id}"></td><br/>
-        Content:<td th:text="${message.content}"></td><br/>
-        Date Posted:<td th:text="${message.date}"></td><br/>
-        Sent by:<td th:text="${message.username}"></td><br/>
-        <td>
+
+    
+<th:block th:each="message: ${messages}">
+        Id:<span th:text="${message.id}"></span><br/>
+        Content:<span th:text="${message.content}"></span><br/>
+        Date Posted:<span th:text="${message.posteddate}"></span><br/>
+        Sent by:<span th:text="${message.sentby}"></span><br/>
+        <span>
             <a href="/">Go Back</a>
-        </td>
-    </tr>
-</table>
+        </span>
+   
+</th:block>
+
 </body>
 </html>

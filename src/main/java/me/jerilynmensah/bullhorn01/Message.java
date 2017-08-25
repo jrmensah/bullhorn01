@@ -1,5 +1,7 @@
 package me.jerilynmensah.bullhorn01;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,12 +22,12 @@ public class Message {
     private String content;
 
     @NotNull
-    @Size(min=3)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date posteddate;
 
     @NotNull
-    @Min(3)
-    String sentby;
+    @Size(min=3)
+    private String sentby;
 
     public long getId() {
         return id;

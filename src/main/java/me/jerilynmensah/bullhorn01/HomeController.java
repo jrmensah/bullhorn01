@@ -21,28 +21,34 @@ public class HomeController {
         model.addAttribute("messages", messageRepository.findAll());
         return "index";
     }
+    @RequestMapping("/list")
+    public String showMessages(Model model){
+        model.addAttribute("messages", messageRepository.findAll());
+        return "list";
+    }
+
     @GetMapping("/add")
     public String messageForm(Model model){
-        model.addAttribute("messages", new Message());
+        model.addAttribute("message", new Message());
         return "messageform";
     }
     @PostMapping("/process")
-    public String processForm(@Valid Message messages, BindingResult result)
+    public String processForm(@Valid Message message, BindingResult result)
     {
         if(result.hasErrors()){
             return "messageform";
         }
-        messageRepository.save(messages);
+        messageRepository.save(message);
         return "redirect:/";
     }
     @RequestMapping("/content/{id}")
-    public String showContent(@PathVariable("message") long id, Model model) {
-        model.addAttribute("messages", messageRepository.findOne(id));
+    public String showContent(@PathVariable("id") long id, Model model) {
+        model.addAttribute("message", messageRepository.findOne(id));
         return "show";
     }
     @RequestMapping("/posteddate/{id}")
-    public String showDate(@PathVariable("message") long id, Model model) {
-        model.addAttribute("messages", messageRepository.findOne(id));
+    public String showDate(@PathVariable("id") long id, Model model) {
+        model.addAttribute("message", messageRepository.findOne(id));
         return "messageform";
     }
 
